@@ -3,22 +3,33 @@
 namespace MVC\Core\Database;
 
 use PDO;
-use MVC\Core\Database\DatabaseConfig;
+use PDOException;
 
-abstract class Database
-{
-    protected static function getDB()
+class Database {
+    private static $factory;
+
+    public static function createInstance($config = null)
     {
-        static $db = null;
+        $settings['dbname'] = 'test';
+        $settings['dbhost'] = '127.0.0.1';
+        $settings['dbuser'] = 'root';
+        $settings['dbpass'] = '';
 
-        if ($db === null) {
-            $dsn = 'mysql:host=' . DatabaseConfig::DB_HOST . ';dbname=' . DatabaseConfig::DB_NAME . ';charset=utf8';
-            $db = new PDO($dsn, DatabaseConfig::DB_USER, DatabaseConfig::DB_PASSWORD);
+        try{
+            $dsn = 'mysql:dbname=' . $settings['dbname'] . ';host=' . $settings['dbhost'];
+            $pdo = new PDO($dsn, $settings['dbuser'], $settings['dbpass'], array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
-            // Throw an Exception when an error occurs
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
+            $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+            self::$factory[$config] = $pdo;
+
+            return self::$factory[$config];
         }
-
-        return $db;
+        catch (PDOException $e) {
+            die ('Connection failed: ' . $e->getMessage());
+        }
     }
 }
+?>

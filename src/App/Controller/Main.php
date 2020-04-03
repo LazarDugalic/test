@@ -1,13 +1,16 @@
 <?php
 
-
 namespace MVC\Controller;
 
+use MVC\Model\Comment\Comment;
+use MVC\Model\Comment\CommentRepository;
 
 class Main
 {
     public function index()
     {
-        echo 'test';
+        $comments = (new CommentRepository())->findAll();
+
+        var_dump($comments);die();
     }
 }
