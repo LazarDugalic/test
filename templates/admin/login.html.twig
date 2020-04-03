@@ -1,10 +1,27 @@
-<form action="/admin/login" method="post">
-    <label for="email">Email:</label>
-    <input type="text" name="email" class="email">
-    <label for="password">Password:</label>
-    <input type="text" name="password" class="password">
-    <input type="submit" value="login" name="login">
-</form>
-{% if message is defined %}
-    {{ message }}
-{% endif %}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <div class="form-group w-100">
+                    <h1 class="mt-5">Login</h1>
+                    <form action="/admin/login" method="post">
+                        <label for="email" class="col-form-label">Email:</label>
+                        <input type="text" name="email" class="email form-control">
+                        <label for="password" class="col-form-label">Password:</label>
+                        <input type="text" name="password" class="password form-control">
+                        <input type="submit" value="login" name="login" class="float-right btn btn-success my-2">
+                    </form>
+                </div>
+                {% if message is defined %}
+                    {{ message }}
+                {% endif %}
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+
+{% endblock %}
+

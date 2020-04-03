@@ -1,8 +1,9 @@
-<div class="new-comment">
+<div class="new-comment form-group w-25">
     <form action="/comment/create" method="post" class="new-comment-form">
-        <label for="email">Email :</label><input type="text" name="email" id="email">
-        <label for="name">Name</label><input type="text" name="name" id="name">
-        <label for="new-comment-texarea">Text</label><textarea name="text" id="new-comment-texarea" cols="30" rows="3"></textarea>
-        <input type="submit" name="publish" id="new-comment" value="publish">
+        <label for="email" class="col-form-label">Email :</label><input type="text" name="email" id="email" class="form-control">
+        <label for="name" class="col-form-label">Name</label><input type="text" name="name" id="name" class="form-control">
+        <label for="new-comment-texarea" class="col-form-label">Text</label>
+        <textarea name="text" id="new-comment-texarea" cols="30" rows="4" class="form-text" maxlength="120"></textarea>
+        <input type="submit" name="publish" id="new-comment" value="publish" class="btn btn-success mt-2">
     </form>
 </div>

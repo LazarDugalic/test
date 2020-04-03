@@ -1,12 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="float-right"><a href="/admin/login" class="font-weight-bold btn btn-group-lg">Login</a></div>
+    <a href="/admin/login" class="float-right font-weight-bold btn btn-group-lg">Login</a>
+
     <div class="container">
+        <div class="row mb-5">
+            <div class="col-4"></div>
+            <div class="col-4"><h1 class="col-10">Products</h1></div>
+            <div class="col-3"></div>
+        </div>
         <div class="row">
             {% for product in products %}
                 <div class="col-4">
-                    <img src="{{ product.image }}" alt="image">
+                    <div class="image"><img src="https://via.placeholder.com/150" alt="image"></div>
                     <b>{{ product.title }}</b>
                     <p>{{ product.description }}</p>
                 </div>
@@ -14,14 +20,17 @@
         </div>
         <div class="comments">
             {% for comment in comments %}
-                <div class="comment">
-                    Posted by <b>{{ comment.name }}</b>
-                    <p>{{ comment.text }}</p>
+                <div class="comment border border-dark mb-4">
+                    <div class="m-2">Posted by <b>{{ comment.name }}</b></div>
+                    <div class="m-2"><p>{{ comment.text }}</p></div>
                 </div>
             {% endfor %}
         </div>
+        <div>
+            <h4>Leave a comment</h4>
+            {% include 'comment/new_form.html.twig' %}
+        </div>
 
-        {% include 'comment/new_form.html.twig' %}
         <div class="alert">
 
         </div>
