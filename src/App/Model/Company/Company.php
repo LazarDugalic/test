@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Entity;
+namespace MVC\Model\Company;
 
 /**
  * Class Company

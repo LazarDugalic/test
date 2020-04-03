@@ -20,6 +20,34 @@
             {% endfor %}
         </div>
     {% include 'comment/new_form.html.twig' %}
-    </div>
+        <div class="alert">
 
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('#new-comment').click(function (e) {
+                let email = $('#email').val(),
+                    name = $('#name').val(),
+                    text = $('#new-comment-texarea').val();
+                $('.alert').empty();
+
+                if (email.length > 0 && name.length > 0 && text.length > 0) {
+                    if (validateEmail(email)) {
+                        $('.new-comment-form').submit();
+                        $('.alert').append('<p>Comment sent !</p>');
+                    } else {
+                        $('.alert').append('<p>Invalid email format !</p>');
+                    }
+                } else {
+                    $('.alert').append('<p>All fields must be filled in !</p>');
+                }
+            });
+        });
+        function validateEmail($email) {
+            let emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            return emailReg.test( $email );
+        }
+    </script>
 {% endblock %}

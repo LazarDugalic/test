@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace MVC\Model\User;
 
 /**
  * Class User

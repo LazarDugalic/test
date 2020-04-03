@@ -1,9 +1,8 @@
 <div class="new-comment">
-    <form action="Comment.php" method="post">
-        <input type="text" name="email">
-        <input type="text" name="name">
-        <textarea name="text" id="new-comment-texarea" cols="30" rows="3"></textarea>
-        <input type="submit" name="Publish">
+    <form action="/comment/create" method="post" class="new-comment-form">
+        <label for="email">Email :</label><input type="text" name="email" id="email">
+        <label for="name">Name</label><input type="text" name="name" id="name">
+        <label for="new-comment-texarea">Text</label><textarea name="text" id="new-comment-texarea" cols="30" rows="3"></textarea>
+        <input type="submit" name="publish" id="new-comment" value="publish">
     </form>
 </div>
-

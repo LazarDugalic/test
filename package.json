@@ -12,6 +12,7 @@
     "@symfony/webpack-encore": "^0.28.2"
   },
   "dependencies": {
-    "bootstrap": "^4.4.1"
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.4.1"
   }
 }

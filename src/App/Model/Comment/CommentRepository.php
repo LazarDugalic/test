@@ -8,7 +8,7 @@ class CommentRepository
     private $db;
     private $insertComment = "INSERT INTO comment (email, name, text, status) VALUES (?, ?, ?, 0)";
     private $deleteComment = "DELETE  FROM comment WHERE id = ?";
-    private $getCommentById = "SELECT * FROM comment WHERE id = ?";
+    private $getAllowedComment = "SELECT * FROM comment WHERE status = 1";
     private $getAllComments = "SELECT * FROM comment ORDER BY id ASC";
 
     public function __construct()
@@ -58,12 +58,11 @@ class CommentRepository
      * @param $id
      * @return mixed
      */
-    public function find($id)
+    public function findAllAllowed()
     {
-        $statement = $this->db->prepare($this->getCommentById);
-        $statement->bindValue(1, $id);
+        $statement = $this->db->prepare($this->getAllowedComment);
         $statement->execute();
 
-        return $statement->fetch();
+        return $statement->fetchAll();
     }
 }
