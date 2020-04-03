@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for comment in comments %}
+        <h4><b>Comment number:</b> {{ comment.id }}</h4>
+        <p><b>Email:</b> {{ comment.email }}</p>
+        <p><b>Name:</b> {{ comment.name }}</p>
+        <p><b>Text:</b> {{ comment.text }}</p>
+        <div>
+            <b>Status:</b>
+            <form action="/comment/approval" method="post">
+                <input type="hidden" name="comment-id" value="{{ comment.id }}">
+                <input type="checkbox" name="approve-comment" id="{{ comment.id }}" value="{{ comment.id }}" {% if  comment.status == 1 %} checked {% endif %} onchange="this.form.submit()">
+                <label for="{{ comment.id }}">
+                    {% if  comment.status == 1 %}
+                        <p>Approved</p>
+                    {% else %}
+                        <p>Disapproved</p>
+                    {% endif %}
+                </label>
+            </form>
+        </div>
+    {% endfor %}
+{% endblock %}

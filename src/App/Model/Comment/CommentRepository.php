@@ -8,8 +8,10 @@ class CommentRepository
     private $db;
     private $insertComment = "INSERT INTO comment (email, name, text, status) VALUES (?, ?, ?, 0)";
     private $deleteComment = "DELETE  FROM comment WHERE id = ?";
+    private $getCommentById = "SELECT * FROM comment WHERE id = ?";
     private $getAllowedComment = "SELECT * FROM comment WHERE status = 1";
     private $getAllComments = "SELECT * FROM comment ORDER BY id ASC";
+    private $changeStatus = "UPDATE comment SET status = ? WHERE id = ?;";
 
     public function __construct()
     {
@@ -64,5 +66,25 @@ class CommentRepository
         $statement->execute();
 
         return $statement->fetchAll();
+    }
+
+    public function find($id)
+    {
+        $statement = $this->db->prepare($this->getCommentById);
+        $statement->bindValue(1, $id);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
+
+    public function changeCommentStatus($id)
+    {
+        $comment = $this->find($id);
+        $status = $comment['status'] ? 0 : 1;
+        $statement = $this->db->prepare($this->changeStatus);
+        $statement->bindValue(1, $status);
+        $statement->bindValue(2, $comment['id']);
+
+        $statement->execute();
     }
 }

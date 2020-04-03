@@ -15,20 +15,24 @@ class Comment
         $email = $_POST['email'] ? : null;
         $name = $_POST['name'] ? : null;
         $text = $_POST['text'] ? : null;
-        $message = '';
 
         if ($_POST['publish']) {
             if (!empty($email) && !empty($name) && !empty($text)) {
                 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     (new CommentRepository())->createNewComment($email, $name, $text);
-                } else {
-                    $message = 'Invalid email format !';
                 }
-            } else {
-                $message = 'All fields must be filled in !';
             }
         }
 
         header('Location: /main/index');
+    }
+
+    public function approval()
+    {
+        if ($_POST['comment-id']) {
+            (new CommentRepository())->changeCommentStatus((int) $_POST['comment-id']);
+        }
+
+        header('Location: /admin/index');
     }
 }

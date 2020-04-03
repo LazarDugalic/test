@@ -19,7 +19,8 @@
                 </div>
             {% endfor %}
         </div>
-    {% include 'comment/new_form.html.twig' %}
+
+        {% include 'comment/new_form.html.twig' %}
         <div class="alert">
 
         </div>
@@ -35,8 +36,8 @@
 
                 if (email.length > 0 && name.length > 0 && text.length > 0) {
                     if (validateEmail(email)) {
+                        $('.alert').append('<p>Comment sent !</p>')
                         $('.new-comment-form').submit();
-                        $('.alert').append('<p>Comment sent !</p>');
                     } else {
                         $('.alert').append('<p>Invalid email format !</p>');
                     }
