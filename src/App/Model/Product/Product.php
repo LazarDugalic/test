@@ -1,0 +1,106 @@
+<?php
+
+
+namespace App\Entity;
+
+/**
+ * Class Product
+ * @package App\Entity
+ */
+class Product
+{
+    /** @var int $id */
+    private $id;
+
+    /** @var string $name */
+    private $title;
+
+    /** @var string $description */
+    private $description;
+
+    /** @var string $image */
+    private $image;
+
+    /** @var integer $company */
+    private $company;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage(): string
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage(string $image): void
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCompany(): int
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param int $company
+     */
+    public function setCompany(int $company): void
+    {
+        $this->company = $company;
+    }
+}

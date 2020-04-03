@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {% for product in products %}
+                <div class="col-4">
+                    <img src="{{ product.image }}" alt="image">
+                    <b>{{ product.title }}</b>
+                    <p>{{ product.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="comments">
+            {% for comment in comments %}
+                <div class="comment">
+                    Posted by <b>{{ comment.name }}</b>
+                    <p>{{ comment.text }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% include 'comment/new_form.html.twig' %}
+    </div>
+
+{% endblock %}

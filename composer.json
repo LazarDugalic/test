@@ -1,0 +1,17 @@
+{
+    "name": "lazar",
+    "authors": [
+        {
+            "name": "lazar",
+            "email": "lazardugalic1@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MVC\\": "src/"
+        }
+    }
+}
