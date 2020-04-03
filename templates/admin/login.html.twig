@@ -1,0 +1,10 @@
+<form action="/admin/login" method="post">
+    <label for="email">Email:</label>
+    <input type="text" name="email" class="email">
+    <label for="password">Password:</label>
+    <input type="text" name="password" class="password">
+    <input type="submit" value="login" name="login">
+</form>
+{% if message is defined %}
+    {{ message }}
+{% endif %}

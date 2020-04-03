@@ -9,6 +9,7 @@ class UserRepository
     private $insertUser = "INSERT INTO user (email, name, text, status) VALUES (?, ?, ?, 0)";
     private $deleteUser = "DELETE  FROM user WHERE id = ?";
     private $getUserById = "SELECT * FROM user WHERE id = ?";
+    private $getUserByEmail = "SELECT * FROM user WHERE email = ?";
     private $getAllUsers = "SELECT * FROM user ORDER BY id ASC";
 
     public function __construct()
@@ -62,6 +63,19 @@ class UserRepository
     {
         $statement = $this->db->prepare($this->getUserById);
         $statement->bindValue(1, $id);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
+
+    /**
+     * @param $email
+     * @return mixed
+     */
+    public function findByEmail($email)
+    {
+        $statement = $this->db->prepare($this->getUserByEmail);
+        $statement->bindValue(1, $email);
         $statement->execute();
 
         return $statement->fetch();
