@@ -15,6 +15,8 @@
     - $ cd /var/www/test.local
     -    
 ### Import database
+    Go to mysql console and type :
+    - create database test character set utf8;
     - $ mysql -u root test < sql/test.sql  
     
 ### Install packages
@@ -28,6 +30,9 @@
     
 ### Start webpack
     - $ ./assets.sh
+
+### Dump autoload
+    - $ composer dump-autoload -o        
     
 ### Admin credentials
     - email : admin@gmail.com

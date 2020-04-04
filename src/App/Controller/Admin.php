@@ -23,27 +23,28 @@ class Admin
 
     public function login()
     {
+        if ($_SESSION['logged_user'] || $_SESSION['logged_user'] != null) {
+            header('Location: /admin/index');
+        }
+
+        $message = '';
         if ($_POST['login']) {
             $userRepository = new UserRepository();
             $user = $userRepository->findByEmail($_POST['email']);
-
             if ($user) {
                 if ($user['password'] == $_POST['password']) {
                     $_SESSION['logged_user'] = $_POST['email'];
-
                     header('Location: /admin/index');
                 } else {
-                    Twig::render('admin/login.html.twig', [
-                        'message' => 'Wrong credentials !'
-                    ]);
+                    $message = 'Wrong credentials !';
                 }
             } else {
-                Twig::render('admin/login.html.twig', [
-                    'message' => 'Wrong credentials !'
-                ]);
+                $message = 'Wrong credentials !';
             }
-        } else {
-            Twig::render('admin/login.html.twig');
         }
+
+        Twig::render('admin/login.html.twig', [
+            'message' => $message
+        ]);
     }
 }
