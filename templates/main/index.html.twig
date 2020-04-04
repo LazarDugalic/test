@@ -4,7 +4,7 @@
     <a href="/admin/login" class="float-right font-weight-bold btn btn-group-lg">Login</a>
 
     <div class="container">
-        <div class="row mb-5">
+        <div class="row mb-3">
             <div class="col-4"></div>
             <div class="col-4"><h1 class="col-10">Products</h1></div>
             <div class="col-3"></div>
@@ -26,33 +26,34 @@
                 </div>
             {% endfor %}
         </div>
+        <div class="alert-message"></div>
         <div>
             <h4>Leave a comment</h4>
             {% include 'comment/new_form.html.twig' %}
-        </div>
-
-        <div class="alert">
-
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function () {
             $('#new-comment').click(function (e) {
+                e.preventDefault();
                 let email = $('#email').val(),
                     name = $('#name').val(),
                     text = $('#new-comment-texarea').val();
-                $('.alert').empty();
+                $('.alert-message').empty();
 
                 if (email.length > 0 && name.length > 0 && text.length > 0) {
                     if (validateEmail(email)) {
-                        $('.alert').append('<p>Comment sent !</p>')
-                        $('.new-comment-form').submit();
+                        $('.alert-message').append('<div class="alert alert-success" role="alert">Comment sent for verification!</div>');
+                        setTimeout(function () {
+                            $('.new-comment-form').submit();
+                        }, 2000);
+
                     } else {
-                        $('.alert').append('<p>Invalid email format !</p>');
+                    $('.alert-message').append('<div class="alert alert-danger" role="alert">Invalid email format !</div>');
                     }
                 } else {
-                    $('.alert').append('<p>All fields must be filled in !</p>');
+                    $('.alert-message').append('<div class="alert alert-danger" role="alert">All fields must be filled in !</div>');
                 }
             });
         });
