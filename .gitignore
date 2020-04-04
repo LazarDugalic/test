@@ -1,0 +1,19 @@
+/vendor/
+/package-lock.json/
+# PHPUnit
+/app/phpunit.xml
+/phpunit.xml
+
+# Build data
+/build/
+# Composer PHAR
+/composer.phar
+
+# Embedded web-server pid file
+/node_modules/
+/.idea/
+/public/build/*
+/public/build/
+
+
+
