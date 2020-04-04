@@ -33,5 +33,16 @@
     - email : admin@gmail.com
     - password: admin    
     
+### Workflow
+    Workflow:On the first page, you can see the listed products and approved messages.
+    Below that, you have the option to leave a comment. After you submit a form,
+    the message will be sent to the admin for review and approval. To access the admin panel,
+    you have to click in the top right corner, on the "Login" link. After that,
+    you'll need to log in with the following credentials:
+    - Email : admin@gmail.com
+    - Password: admin
+    After that, you will see all of the messages. Bellow every message is a checkbox that
+    can change the message status from disapproved to approved nad opposite.    
+    
     
     

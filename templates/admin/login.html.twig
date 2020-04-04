@@ -11,12 +11,12 @@
                         <label for="email" class="col-form-label">Email:</label>
                         <input type="text" name="email" class="email form-control">
                         <label for="password" class="col-form-label">Password:</label>
-                        <input type="text" name="password" class="password form-control">
+                        <input type="password" name="password" class="password form-control">
                         <input type="submit" value="login" name="login" class="float-right btn btn-success my-2">
                     </form>
                 </div>
                 {% if message is defined %}
-                    {{ message }}
+                    <p class="text-danger">{{ message }}</p>
                 {% endif %}
             </div>
             <div class="col-4"></div>
