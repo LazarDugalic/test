@@ -38,7 +38,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (2,'dasdasdasdsa','lazardugalic1@gmail.com','dsadasdas',1),(3,'dsad','lazardugalic1@gmail.com','asdas',0),(4,'dasdas','lazardugalic1@gmail.com','dasdas',0),(5,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa','lazardugalic1@gmail.com','aaaaaaaaaaaaaaaaaa',0),(6,'aa','lazardugalic1@gmail.com','aa',0),(7,'dasdas','lazardugalic1@gmail.com','dasdsa',0),(8,'dasdasd','lazardugalic1@gmail.com','fdsfdsf',0),(9,'dasdasd','lazardugalic1@gmail.com','gjhgj',0),(10,'fdsfsdf','lazardugalic1@gmail.com','sdfsdf',0),(11,'dasdasd','lazardugalic1@gmail.com','gg',0),(12,'gfdgdfgdf','lazardugalic1@gmail.com','gfdgfdgdf',0),(13,'dasdasd','lazardugalic1@gmail.com','d dsa ads a sdsd asd adsdasdsadsa dsa asd asd dsa sda asd asd sdaasdsda sda sd asda sda sd asd a sda asdsda  sdasda sda ',0),(14,'dasdasd','lazardugalic1@gmail.com','dsdasad',0);
+INSERT INTO `comment` VALUES (1,'John','john@gmail.com','First message random text',1);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,7 +55,7 @@ CREATE TABLE `company` (
   `reg_number` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `company_reg_number_uindex` (`reg_number`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,6 +64,7 @@ CREATE TABLE `company` (
 
 LOCK TABLES `company` WRITE;
 /*!40000 ALTER TABLE `company` DISABLE KEYS */;
+INSERT INTO `company` VALUES (1,'Company DOO','123');
 /*!40000 ALTER TABLE `company` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,7 +118,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'lazardugalic1@gmail.com','11111111','lazar');
+INSERT INTO `user` VALUES (1,'admin@gmail.com','admin','lazar');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -130,4 +131,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-04 10:28:02
+-- Dump completed on 2020-04-04 11:57:03
