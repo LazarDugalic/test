@@ -13,7 +13,7 @@ class Main
         $comments = (new CommentRepository())->findAllAllowed();
         $products = (new ProductRepository())->findAll();
 
-        Twig::render('default/index.html.twig', [
+        Twig::render('main/index.html.twig', [
             'products' => $products,
             'comments' => $comments
         ]);
