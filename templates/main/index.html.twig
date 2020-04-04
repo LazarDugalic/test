@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a href="/admin/login" class="float-right font-weight-bold btn btn-group-lg">Login</a>
+
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-4"></div>
+            <div class="col-4"><h1 class="col-10">Products</h1></div>
+            <div class="col-3"></div>
+        </div>
+        <div class="row">
+            {% for product in products %}
+                <div class="col-4">
+                    <div class="image"><img src="https://via.placeholder.com/150" alt="image"></div>
+                    <b>{{ product.title }}</b>
+                    <p>{{ product.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="comments">
+            {% for comment in comments %}
+                <div class="comment border border-dark mb-4">
+                    <div class="m-2">Posted by <b>{{ comment.name }}</b></div>
+                    <div class="m-2"><p>{{ comment.text }}</p></div>
+                </div>
+            {% endfor %}
+        </div>
+        <div>
+            <h4>Leave a comment</h4>
+            {% include 'comment/new_form.html.twig' %}
+        </div>
+
+        <div class="alert">
+
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('#new-comment').click(function (e) {
+                let email = $('#email').val(),
+                    name = $('#name').val(),
+                    text = $('#new-comment-texarea').val();
+                $('.alert').empty();
+
+                if (email.length > 0 && name.length > 0 && text.length > 0) {
+                    if (validateEmail(email)) {
+                        $('.alert').append('<p>Comment sent !</p>')
+                        $('.new-comment-form').submit();
+                    } else {
+                        $('.alert').append('<p>Invalid email format !</p>');
+                    }
+                } else {
+                    $('.alert').append('<p>All fields must be filled in !</p>');
+                }
+            });
+        });
+        function validateEmail($email) {
+            let emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            return emailReg.test( $email );
+        }
+    </script>
+{% endblock %}
