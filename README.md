@@ -16,11 +16,11 @@
     -    
 ### Import database
     - $ mysql -u root test < sql/test.sql  
-    -
+    
 ### Install packages
     - $ composer install
     - $ npm install
-    -
+    
 ### Apache configuration   
     - $ sudo cp apache2/apache.conf /etc/apache2/sites-enabled/test.conf
     - $ sudo service apache2 restart
