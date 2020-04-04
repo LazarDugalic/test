@@ -16,7 +16,7 @@ class Comment
         $name = $_POST['name'] ? : null;
         $text = $_POST['text'] ? : null;
 
-        if ($_POST['publish']) {
+        if ($_POST['email']) {
             if (!empty($email) && !empty($name) && !empty($text)) {
                 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     (new CommentRepository())->createNewComment($email, $name, $text);
